@@ -14,9 +14,8 @@ args = parser.parse_args()
 if args.interactive:
     args.template = input("Template: ")
 
-realPath = os.path.realpath(__file__)
-scaffoldPath = realPath.split(realPath.split("/")[-1])[0]
-templatePath = f"{scaffoldPath[:-1]}/templates/{args.template}"
+scaffoldPath = os.path.dirname(os.path.abspath(__file__))
+templatePath = f"{scaffoldPath}/templates/{args.template}"
 configPath = f"{templatePath}/template.yaml"
 
 def processFile(f):
