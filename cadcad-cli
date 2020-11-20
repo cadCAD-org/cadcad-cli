@@ -1,0 +1,102 @@
+#!/bin/env python
+
+import argparse
+import os
+import shutil
+import sys
+import yaml
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--interactive", help="run in interactive mode", action="store_true")
+parser.add_argument("--template", help="a template to use when scaffolding a new project (simple, normal, complex)", default="normal")
+args = parser.parse_args()
+
+if args.interactive:
+    args.template = input("Template: ")
+
+realPath = os.path.realpath(__file__)
+scaffoldPath = realPath.split(realPath.split("/")[-1])[0]
+templatePath = f"{scaffoldPath[:-1]}/templates/{args.template}"
+configPath = f"{templatePath}/template.yaml"
+
+def processFile(f):
+    print("Creating file: " + f["name"])
+
+    if "source" in f.keys():
+        shutil.copyfile(f'{templatePath}/{f["source"]}', f["name"])
+    else:
+        with open(f["name"], "w"):
+            pass
+
+def processDirectory(d):
+    print("Creating directory: " + d["name"])
+
+    try:
+        os.mkdir(d["name"])
+    except OSError:
+        print("Failed to create directory: " + d["name"] + " (aborting)")
+        exit()
+
+    try:
+        os.chdir(d["name"])
+    except OSError:
+        print("Failed to change working directory. (aborting)")
+        exit()
+
+    if "files" in d.keys():
+        for f in d["files"]:
+            processFile(f)
+    
+    if "directories" in d.keys():
+        for dir in d["directories"]:
+            processDirectory(dir)
+
+with open(configPath) as file:
+    config = yaml.load(file, Loader=yaml.FullLoader)
+    
+    if "engine" not in config.keys():
+        print("Warning: Template does not contain 'engine' pragma.")
+        engine = "unspecified"
+    else:
+        engine = config["engine"]
+
+    if "meta" not in config.keys():
+        print("Warning: Template isn't versioned.")
+        version = ""
+    else:
+        if "version" not in config["meta"].keys():
+            print("Warning: Template isn't versioned.")
+            version = ""
+        else:
+            version = config["meta"]["version"]
+
+        if "name" in config["meta"].keys():
+            name = config["meta"]["name"]
+        else:
+            name = ""
+
+        if "description" in config["meta"].keys():
+            description = config["meta"]["description"]
+        else:
+            description = ""
+
+    if "scaffold" not in config.keys():
+        print("Error: Template does not include scaffolding structure.")
+        exit()
+    else:
+        with open("template-notes.txt", "w") as notes:
+            notes.write("engine: " + str(engine) + "\r\n")
+            notes.write("name: " + name + "\r\n")
+            notes.write("version: " + str(version) + "\r\n")
+            notes.write("description: " + description + "\r\n")
+
+        scaffold = config["scaffold"]
+
+        if scaffold is not None:
+            if "files" in scaffold.keys():
+                for f in scaffold["files"]:
+                    processFile(f)
+
+            if "directories" in scaffold.keys():
+                for d in scaffold["directories"]:
+                    processDirectory(d)

@@ -1,0 +1,6 @@
+engine: 0.4.23
+meta:
+  name: complex
+  description: A template for a complex cadCAD model. Not yet implemented.
+  version: 1.0
+scaffold:

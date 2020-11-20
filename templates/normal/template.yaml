@@ -1,0 +1,16 @@
+engine: 0.4.23
+meta:
+  name: normal
+  description: A template for a medium-complexity model.
+  version: 1.0
+scaffold:
+  files:
+    - name: experiment.ipynb
+      source: experiment.ipynb
+  directories:
+    - name: model
+      files:
+        - name: config.py
+          source: config.py
+        - name: psubs.py
+          source: psubs.py

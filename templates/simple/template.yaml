@@ -1,0 +1,9 @@
+engine: 0.4.23
+meta:
+  name: simple
+  description: A template for an all-in-one Jupyter notebook.
+  version: 1.0
+scaffold:
+  files:
+    - name: experiment.ipynb
+      source: experiment.ipynb
