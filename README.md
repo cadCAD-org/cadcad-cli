@@ -26,5 +26,5 @@ To uninstall, simply remove the `cadCAD CLI` entry from your shells configuratio
 
 ```bash
 # cadCAD CLI
-export PATH=$PATH:/path/to/cadcad-cli
+export PATH=$PATH:/path/to/cadcad-cli/bin
 ```
