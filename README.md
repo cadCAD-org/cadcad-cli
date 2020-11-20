@@ -14,7 +14,7 @@ mkdir my-experiment && cd my-experiment
 cadcad-cli
 ```
 
-By default, `cadcad-cli` runs in non-interative mode. If you do no specify a template when you run it, it will default to the included `normal` template.
+By default, `cadcad-cli` runs in non-interactive mode. If you do no specify a template when you run it it will default to the included `normal` template.
 
 For complete usage info:
 ```bash
