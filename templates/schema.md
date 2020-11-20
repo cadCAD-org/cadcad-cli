@@ -10,22 +10,22 @@
 </dl>
 
 <dl>
-    <dt>name</dt>
+    <dt>meta: name</dt>
     <dd>The name of this template.</dd>
 </dl>
 
 <dl>
-    <dt>description</dt>
+    <dt>meta: description</dt>
     <dd>A description of this template.</dd>
 </dl>
 
 <dl>
-    <dt>version</dt>
+    <dt>meta: version</dt>
     <dd>The version of this template (semantic versioning used).</dd>
 </dl>
 
 <dl>
-    <dt>requirements</dt>
+    <dt>meta: requirements</dt>
     <dd>The custom requirements.txt file to replace scaffold default.</dd>
 </dl>
 
@@ -35,21 +35,26 @@
 </dl>
 
 <dl>
-    <dt>file</dt>
-    <dd>The name of a file to be created.</dd>
+    <dt>scaffold: directories</dt>
+    <dd>A list of directory entries. May belong as child to directory entries as well.</dd>
 </dl>
 
 <dl>
-    <dt>source</dt>
-    <dd>The file to be copied when creating a file.</dd>
-</dl>
-
-<dl>
-    <dt>content</dt>
+    <dt>directories: name</dt>
     <dd>Inline content to be added to a created file.</dd>
 </dl>
 
 <dl>
-    <dt>directory</dt>
-    <dd>The name of a directory to be created.</dd>
+    <dt>scaffold: files</dt>
+    <dd>A list of file entries. May belong as child to directory entries as well.</dd>
+</dl>
+
+<dl>
+    <dt>files: name</dt>
+    <dd>The name of the file to be created.</dd>
+</dl>
+
+<dl>
+    <dt>files: source</dt>
+    <dd>The file to be copied when creating a file.</dd>
 </dl>

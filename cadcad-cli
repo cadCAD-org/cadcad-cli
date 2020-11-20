@@ -87,7 +87,7 @@ with open(configPath) as file:
             notes.write("engine: " + str(engine) + "\r\n")
             notes.write("name: " + name + "\r\n")
             notes.write("version: " + str(version) + "\r\n")
-            notes.write("description: " + description + "\r\n")
+            notes.write("description: " + description)
 
         scaffold = config["scaffold"]
 
