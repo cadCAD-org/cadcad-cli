@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ $SHELL = "/bin/bash" ]
+then
+    echo
+    echo "# cadCAD CLI" >> $HOME/.bashrc
+    echo "export PATH=\$PATH:$PWD" >> $HOME/.bashrc
+fi
+
+echo "Installed! Please restart your terminal to take effect."
