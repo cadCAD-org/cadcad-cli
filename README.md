@@ -1,4 +1,6 @@
 # cadcad-cli
+`cadcad-cli` is a CLI tool for cadCAD to aid in creating consistent and dependable experiments from scratch. It uses templates to scaffold out experiment file and directory structure. New templates can be created by following a supported schema. Future versions of the CLI tool will facilitate virtual environments through `venv`.
+
 ## Installation
 ```bash
 git clone https://github.com/cadcad-org/cadcad-cli
