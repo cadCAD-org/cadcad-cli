@@ -15,7 +15,7 @@ if args.interactive:
     args.template = input("Template: ")
 
 scaffoldPath = os.path.dirname(os.path.abspath(__file__))
-templatePath = f"{scaffoldPath}/templates/{args.template}"
+templatePath = f"{scaffoldPath}/../templates/{args.template}"
 configPath = f"{templatePath}/template.yaml"
 
 def processFile(f):

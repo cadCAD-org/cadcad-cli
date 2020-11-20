@@ -2,9 +2,9 @@
 
 if [ $SHELL = "/bin/bash" ]
 then
-    echo
+    echo "" >> $HOME/.bashrc
     echo "# cadCAD CLI" >> $HOME/.bashrc
-    echo "export PATH=\$PATH:$PWD" >> $HOME/.bashrc
+    echo "export PATH=\$PATH:$PWD/bin" >> $HOME/.bashrc
 fi
 
 echo "Installed! Please restart your terminal to take effect."
