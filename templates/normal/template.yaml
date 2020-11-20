@@ -12,5 +12,13 @@ scaffold:
       files:
         - name: config.py
           source: config.py
-        - name: psubs.py
-          source: psubs.py
+        - name: psub.py
+          source: psub.py
+        - name: state.py
+          source: state.py
+        - name: run.py
+          source: run.py
+        - name: mechanism.py
+          source: mechanism.py
+        - name: behavior.py
+          source: behavior.py
