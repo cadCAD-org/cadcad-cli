@@ -12,7 +12,7 @@ parser.add_argument("--template", help="a template to use when scaffolding a new
 args = parser.parse_args()
 
 if args.interactive:
-    args.template = input("Template: ")
+    args.template = input("Template <simple|normal>: ")
 
 scaffoldPath = os.path.dirname(os.path.abspath(__file__))
 templatePath = f"{scaffoldPath}/../templates/{args.template}"
