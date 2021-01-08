@@ -1,0 +1,9 @@
+engine: 0.4.23
+meta:
+  name: labs
+  description: Not a model. Scaffolds labs.py for BlockScience Labs projects.
+  version: 1.0
+scaffold:
+  files:
+    - name: labs.py
+      source: labs.py
