@@ -1,9 +1,24 @@
 engine: 0.4.23
 meta:
   name: labs
-  description: Not a model. Scaffolds labs.py for BlockScience Labs projects.
+  description: Scaffolds a skeleton model that is BlockScience Labs ready.
   version: 1.0
 scaffold:
   files:
     - name: labs.py
       source: labs.py
+    - name: example.ipynb
+      source: example.ipynb
+    - name: example.csv
+      source: example.csv
+  directories:
+    - name: models
+      files:  
+        - name: config.py
+          source: config.py
+        - name: psubs.py
+          source: psubs.py
+        - name: state.py
+          source: state.py
+        - name: updates.py
+          source: updates.py
