@@ -5,6 +5,7 @@ then
     echo "" >> $HOME/.bashrc
     echo "# cadCAD CLI" >> $HOME/.bashrc
     echo "export PATH=\$PATH:$PWD/bin" >> $HOME/.bashrc
+    export PATH=$PATH:$PWD/bin
 fi
 
-echo "Installed! Please restart your terminal to take effect."
+echo "Installed! You may need to restart your terminal to take effect."
