@@ -1,13 +1,18 @@
-from cadCAD import configuration
+from cadCAD.configuration.utils import config_sim
+from cadCAD.configuration import Experiment
+from models.state_variables import genesis_states
+from models.psubs import partial_state_update_blocks
 
-from .psub import psubs
-from .state import genesis_state
+simulation_parameters = {
+    'T': range(10),
+    'N': 3,
+}
 
-simulation_config = configuration.utils.config_sim({
-    "T": range(10),
-    "N": 1
-})
-
-exp = configuration.Experiment()
-
-exp.append_configs(sim_configs=simulation_config, initial_state=genesis_state, partial_state_update_blocks=psubs)
+exp = Experiment()
+c = config_sim(simulation_parameters)
+exp.append_configs(
+    model_id="my-model",
+    initial_state=genesis_states,
+    partial_state_update_blocks=partial_state_update_blocks,
+    sim_configs=c
+)

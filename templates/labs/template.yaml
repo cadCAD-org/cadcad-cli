@@ -1,4 +1,4 @@
-engine: 0.4.23
+engine: 0.4.28
 meta:
   name: labs
   description: Scaffolds a skeleton model that is BlockScience Labs ready.

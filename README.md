@@ -22,9 +22,6 @@ cadcad-cli --help
 ```
 
 ## Uninstallation
-To uninstall, simply remove the `cadCAD CLI` entry from your shells configuration script. In the case of `bash`, remove these lines from `.bashrc`:
-
+To uninstall, you can simply remove the `$PATH` export that was added to your `.bashrc`. Additionally, you can run the `install` script with the `-r` flag:
 ```bash
-# cadCAD CLI
-export PATH=$PATH:/path/to/cadcad-cli/bin
-```
+./install -r

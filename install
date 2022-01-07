@@ -1,11 +1,96 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-if [ $SHELL = "/bin/bash" ]
-then
+CADCAD_COMMENT="# cadCAD CLI"
+CADCAD_EXPORT="export PATH=\$PATH:$PWD/bin"
+FLAG=$1
+
+function bashrc_trim {
+    A=`tail -n 1 $HOME/.bashrc`
+
+    if [[ $A = "" ]] ; then
+        sed -i '$d' $HOME/.bashrc
+        bashrc_trim
+    fi
+}
+
+function bashrc_remove {
+    sed -i "/$CADCAD_COMMENT/,+1d" $HOME/.bashrc
+    bashrc_trim
+
+    if [[ $FLAG = "-r" ]] ; then
+        echo "Successfully removed/uninstalled."
+        exit
+    fi
+}
+
+function bashrc_add {
+    if [[ `tail -n 1 $HOME/.bashrc` != "" ]] ; then
+        echo "" >> $HOME/.bashrc
+    fi
+
     echo "" >> $HOME/.bashrc
-    echo "# cadCAD CLI" >> $HOME/.bashrc
-    echo "export PATH=\$PATH:$PWD/bin" >> $HOME/.bashrc
+
+    echo $CADCAD_COMMENT >> $HOME/.bashrc
+    echo $CADCAD_EXPORT >> $HOME/.bashrc
+}
+
+function export_cli {
     export PATH=$PATH:$PWD/bin
+}
+
+if [ $SHELL = "/bin/bash" ] ; then
+    if [[ "$OSTYPE" = "linux-gnu"* ]] ; then
+        echo "Linux detected."
+
+        bashrc_remove
+        bashrc_add
+        export_cli
+
+    elif [[ "$OSTYPE" = "darwin"* ]] ; then
+        echo "Mac OS detected."
+
+        bashrc_remove
+        bashrc_add
+        export_cli
+
+    elif [[ "$OSTYPE" = "cygwin"* ]] ; then
+        # POSIX compatibility layer and Linux environment emulation for Windows
+        echo "Cygwin detected."
+
+        bashrc_remove
+        bashrc_add
+        export_cli
+
+    elif [[ "$OSTYPE" = "msys"* ]] ; then
+        # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
+        echo "Windows detected."
+
+        bashrc_remove
+        bashrc_add
+        export_cli
+
+    elif [[ "$OSTYPE" = "freebsd"* ]] ; then
+        echo "FreeBSD detected."
+
+        bashrc_remove
+        bashrc_add
+        export_cli
+
+    elif [[ "$OSTYPE" = "openbsd"* ]] ; then
+        echo "OpenBSD detected."
+
+        bashrc_remove
+        bashrc_add
+        export_cli
+
+    else
+        echo "Could not install cadcad-cli! To install, please manually update your path to include the bin/ directory."
+        exit
+    fi
+
+    echo "Installed! You may need to restart your terminal to take effect."
+else
+    echo "Could not install cadcad-cli! To install, please manually update your path to include the bin/ directory."
 fi
 
-echo "Installed! You may need to restart your terminal to take effect."
+exit
