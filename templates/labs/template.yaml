@@ -12,7 +12,7 @@ scaffold:
     - name: example.csv
       source: example.csv
   directories:
-    - name: models
+    - name: model
       files:  
         - name: config.py
           source: config.py
