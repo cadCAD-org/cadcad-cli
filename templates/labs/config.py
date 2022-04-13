@@ -1,6 +1,6 @@
 from cadCAD.configuration.utils import config_sim
 from cadCAD.configuration import Experiment
-from models.state_variables import genesis_states
+from models.state import genesis_states
 from models.psubs import partial_state_update_blocks
 
 simulation_parameters = {
