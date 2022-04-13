@@ -1,4 +1,4 @@
 # labs.py
-from models.config import exp
+from model.config import exp
 
-model_dir="models"
+model_dir="model"
